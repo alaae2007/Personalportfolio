@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Personal portfolio website of Alaa Elammar showcasing projects, skills, and contact information.">
+<meta name="keywords" content="Alaa Elammar, portfolio, web developer, HTML, CSS, JavaScript, Python">
+<meta name="author" content="Alaa Elammar">
+
+<title>Alaa Elammar | Personal Portfolio</title>
+
+<style>
+
+/* 
+   BASIC PAGE STYLING
+ */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:linear-gradient(135deg,#0F0C29,#302B63);
+    color:white;
+    line-height:1.6;
+    min-height:100vh;
+}
+
+/* 
+   NaV bar, i made it floating glass, learnt it from a youtube tutorial 
+*/
+
+header{
+    position:sticky;
+    top:15px;
+    z-index:1000;
+    margin:20px 30px 0 30px;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.35);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    letter-spacing:0.5px;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    padding:6px 12px;
+    border-radius:6px;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    background:#9A6AFF;
+    box-shadow:0 0 10px #9A6AFF;
+}
+
+/* 
+   HERO / INTRO SECTION
+ */
+
+.hero{
+    text-align:center;
+    padding:110px 20px 80px 20px;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    font-size:20px;
+    color:#d8d3ff;
+}
+
+/* typing cursor look */
+#typing{
+    color:#9A6AFF;
+    border-right:2px solid #9A6AFF;
+    padding-right:4px;
+}
+
+/* 
+   ABOUT SECTION
+ */
+
+.about{
+    padding:60px 20px;
+    display:flex;
+    justify-content:center;
+}
+
+.about-box{
+    background:#16213E;
+    padding:40px;
+    border-radius:12px;
+    max-width:800px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+.about-box h2{
+    margin-bottom:15px;
+}
+
+/* 
+   PROJECTS SECTION 
+   (where i show and explain some projects ive done)
+   */
+
+.projects{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.projects h2{
+    margin-bottom:10px;
+}
+
+.project-grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:30px;
+    margin-top:30px;
+}
+
+.project-card{
+    background:#16213E;
+    padding:20px;
+    border-radius:12px;
+    width:300px;
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+    cursor:pointer;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+.project-card:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0 15px 35px rgba(154,106,255,0.5);
+}
+
+.project-card img{
+    width:100%;
+    height:190px;
+    object-fit:cover;
+    border-radius:8px;
+    margin-bottom:12px;
+    transition:transform 0.3s ease;
+}
+
+.project-card:hover img{
+    transform:scale(1.08);
+}
+
+.project-card h3{
+    margin-bottom:8px;
+}
+
+/* 
+   SKILLS SECTION
+*/
+
+.skills{
+    padding:80px 20px;
+    text-align:center;
+}
+
+.skills h2{
+    margin-bottom:15px;
+}
+
+.skills-text{
+    font-size:22px;
+    margin-top:20px;
+    color:#e0dfff;
+}
+
+#skillsTyping{
+    color:#9A6AFF;
+    font-weight:bold;
+    border-right:2px solid #9A6AFF;
+    padding-right:5px;
+}
+
+/* 
+   CONTACT SECTION
+ */
+
+.contact{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.contact h2{
+    margin-bottom:20px;
+}
+
+.contact form{
+    max-width:500px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    background:#16213E;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+input, textarea{
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    outline:none;
+    font-size:15px;
+}
+
+textarea{
+    resize:vertical;
+}
+
+/* 
+   GLOWING BUTTON
+   (Another little thing i learnt from a tutorial )
+ */
+
+button{
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    background:linear-gradient(135deg,#9A6AFF,#4E4FEB);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:all 0.3s ease;
+}
+
+button:hover{
+    transform:scale(1.05);
+    box-shadow:
+    0 0 10px #9A6AFF,
+    0 0 20px #9A6AFF,
+    0 0 30px #4E4FEB;
+}
+
+/* 
+   FOOTER
+ */
+
+footer{
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    background:#16213E;
+}
+
+/* 
+   RESPONSIVE DESIGN
+ */
+
+@media (max-width:768px){
+
+    header{
+        flex-direction:column;
+        gap:12px;
+        margin:15px;
+        padding:15px 20px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero{
+        padding-top:90px;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .project-grid{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .project-card{
+        width:90%;
+        max-width:320px;
+    }
+
+    .skills-text{
+        font-size:19px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- 
+HEADER / NAVBAR
+Edit your name below
+ -->
+
+<header>
+    <div class="logo">
+        <!-- CHANGE THIS TO YOUR NAME -->
+        My Portfolio
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- 
+HERO SECTION
+Typing effect happens here
+ -->
+
+<section class="hero">
+    <h1>
+        Hi, I'm <span id="typing"></span>
+    </h1>
+
+    <p>
+        
+        Aspiring to be a Web Developer
+    </p>
+</section>
+
+<!-- 
+ABOUT SECTION
+
+ -->
+
+<section class="about" id="about">
+    <div class="about-box">
+        <h2>About Me</h2>
+        <p>
+          
+            I am currently learning web development and improving my skills in HTML, CSS and JavaScript. I enjoy designing websites and solving coding problems which I struggle with. I like to challenge myself with my coding and web design skills in order to enhance my knowledge and become even better. I have been coding since high school, as shown in one of the projects below, and have done simple html and css, since I was 15. Ive always enjoyed it and always aspired to be a web developer..
+        </p>
+    </div>
+</section>
+
+<!-- 
+PROJECTS SECTION
+-->
+
+<section class="projects" id="projects">
+    <h2>Projects</h2>
+
+    <div class="project-grid">
+
+        <div class="project-card">
+            <img src="images/project 1 photography website .jpg" alt="Project 1 image">
+
+            <h3>Project 1</h3>
+
+            <p>
+                This is a plain HTML website I made in high school for an assignment. It was all coded by me in HTML when I was 15 years old. 
+            </p>
+        </div>
+
+        <div class="project-card">
+            <img src="images/project 2 weather .jpg" alt="Project 2 image">
+
+            <h3>Project 2</h3>
+
+            <p>
+                In this project, using python, I coded a table showing Sydneys temperature range in the last 7 days and also showed the smallest and largest range of the last 30 days. 
+            </p>
+        </div>
+
+        <div class="project-card">
+            <img src="images/project 3 bistro website .jpg" alt="Project 3 image">
+
+            <h3>Project 3</h3>
+
+            <p>
+                This project is another website, and while I didnt personally code it, I debugged and fixed broken code of both HTML and Javascript. This is one of the more simpler websites. 
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- 
+SKILLS SECTION
+
+I have added Animated skills text which I learnt from watching some tutorials
+ -->
+
+<section class="skills" id="skills">
+    <h2>Skills</h2>
+
+    <p class="skills-text">
+        My skills consist of <span id="skillsTyping"></span>
+    </p>
+</section>
+
+<!-- 
+CONTACT FORM
+This is a form to contact me. 
+ -->
+
+<section class="contact" id="contact">
+    <h2>Contact Me</h2>
+
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <textarea id="message" rows="5" placeholder="Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 My Portfolio</p>
+</footer>
+
+<script>
+
+/* 
+   HERO TYPING EFFECT
+ */
+
+const text = "Alaa Elammar";
+let index = 0;
+
+function typing(){
+    if(index < text.length){
+        document.getElementById("typing").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typing, 120);
+    }
+}
+
+typing();
+
+/* 
+   SKILLS TYPING ANIMATION
+- */
+
+const skills = ["HTML", "CSS", "JavaScript", "Python", "Web Design & Development"];
+
+let skillIndex = 0;
+let charIndex = 0;
+
+function typeSkills(){
+    let currentSkill = skills[skillIndex];
+
+    if(charIndex < currentSkill.length){
+        document.getElementById("skillsTyping").textContent += currentSkill.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeSkills, 120);
+    } else {
+        setTimeout(deleteSkill, 1500);
+    }
+}
+
+function deleteSkill(){
+    let currentText = document.getElementById("skillsTyping").textContent;
+
+    if(currentText.length > 0){
+        document.getElementById("skillsTyping").textContent = currentText.substring(0, currentText.length - 1);
+        setTimeout(deleteSkill, 60);
+    } else {
+        skillIndex++;
+
+        if(skillIndex >= skills.length){
+            skillIndex = 0;
+        }
+
+        charIndex = 0;
+        setTimeout(typeSkills, 200);
+    }
+}
+
+typeSkills();
+
+/* 
+   CONTACT FORM VALIDATION
+ */
+
+document.getElementById("contactForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let message = document.getElementById("message").value.trim();
+
+    if(name === "" || email === "" || message === ""){
+        alert("Please fill in all fields");
+        return;
+    }
+
+    let emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(!emailCheck.test(email)){
+        alert("Please enter a valid email");
+        return;
+    }
+
+    alert("Message sent successfully!");
+    this.reset();
+});
+
+/* 
+   SMOOTH SCROLL NAVIGATION
+ */
+
+document.querySelectorAll("nav a").forEach(link =>{
+    link.addEventListener("click", function(e){
+        e.preventDefault();
+
+        let section = document.querySelector(this.getAttribute("href"));
+
+        section.scrollIntoView({
+            behavior:"smooth"
+        });
+    });
+});
+
+</script>
+
+</body>
+</html>
